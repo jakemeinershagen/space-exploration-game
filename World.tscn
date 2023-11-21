@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bftkvwan1t30n"]
+[gd_scene load_steps=7 format=3 uid="uid://bftkvwan1t30n"]
 
 [ext_resource type="PackedScene" uid="uid://c7gnfvy3f4uci" path="res://Player.tscn" id="1_qatng"]
-[ext_resource type="PackedScene" uid="uid://vcydssqjm0b0" path="res://WhiteBox.tscn" id="2_wtadh"]
+[ext_resource type="PackedScene" uid="uid://vcydssqjm0b0" path="res://Ground.tscn" id="2_wtadh"]
+[ext_resource type="PackedScene" uid="uid://cxqrlj1vb6ewe" path="res://Ship.tscn" id="3_dbs2o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8navu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -25,14 +26,11 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kapmm")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.949852, -0.0905839, 0.299292, 0, 0.957123, 0.289683, -0.3127, -0.275156, 0.909125, 0.628772, 1.45565, 2.6675)
-
 [node name="Player" parent="." instance=ExtResource("1_qatng")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16489, 0)
 
 [node name="Ground" parent="." instance=ExtResource("2_wtadh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
-[node name="WhiteBox" parent="." instance=ExtResource("2_wtadh")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.279094, 4.76837e-07, -6.41701)
+[node name="Ship" parent="." instance=ExtResource("3_dbs2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.13824)

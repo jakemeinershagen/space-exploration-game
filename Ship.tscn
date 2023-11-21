@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxqrlj1vb6ewe"]
+
+[ext_resource type="Material" uid="uid://cpydy1ewoe41j" path="res://Assets/BlueGrid.tres" id="1_ffv3v"]
+[ext_resource type="Material" uid="uid://crbbj8vl47i68" path="res://Assets/GreenGrid.tres" id="2_2un30"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4p1xi"]
+size = Vector3(12.498, 0.70488, 4.55585)
+
+[node name="Ship" type="VehicleBody3D"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.753886, 0)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35406, 0)
+size = Vector3(12.4007, 3.89854, 4.46354)
+material = ExtResource("1_ffv3v")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.591676, -0.806176, 0, 0.806176, 0.591676, 0, 0, 0, 1, 4.81959, 3.63358, 0)
+operation = 2
+size = Vector3(3.17515, 9.49932, 7.24389)
+material = ExtResource("1_ffv3v")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.36135, 2.00641, 0)
+operation = 2
+size = Vector3(18.8373, 2.04551, 3.69543)
+material = ExtResource("1_ffv3v")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.70691, 1.32213, 2.26687)
+operation = 2
+size = Vector3(2.24816, 3.26768, 1)
+material = ExtResource("1_ffv3v")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108465, 0.704419, 0)
+operation = 2
+size = Vector3(11.4137, 1.28894, 3.68036)
+material = ExtResource("1_ffv3v")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1947, 0.199811, 0)
+size = Vector3(0.283892, 1.54186, 0.494713)
+material = ExtResource("2_2un30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.446275, 0)
+shape = SubResource("BoxShape3D_4p1xi")

@@ -10,6 +10,7 @@ size = Vector3(0.25, 0.25, 0.25)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gsyha"]
 
 [node name="Player" type="CharacterBody3D"]
+collision_mask = 6
 script = ExtResource("1_3fwt6")
 
 [node name="CapsuleMesh" type="MeshInstance3D" parent="."]
@@ -30,9 +31,10 @@ shape = SubResource("CapsuleShape3D_gsyha")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477905, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+collision_mask = 7
 spring_length = 5.0
 margin = 0.5
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+[node name="ShoulderCam" type="Camera3D" parent="CameraPivot/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 current = true
