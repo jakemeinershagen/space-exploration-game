@@ -9,6 +9,7 @@ const MOUSE_SENSITIVITY = 0.1
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var cam_pivot = $CameraPivot
+@onready var fpv_cam = $FPVCam
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -16,6 +17,10 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
+		
+		fpv_cam.rotate_x(deg_to_rad(-event.relative.y) * MOUSE_SENSITIVITY)
+		fpv_cam.rotation.x = clamp(fpv_cam.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+		
 		cam_pivot.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY))
 		cam_pivot.rotation.x = clamp(cam_pivot.rotation.x, deg_to_rad(-90), deg_to_rad(30))
 	
