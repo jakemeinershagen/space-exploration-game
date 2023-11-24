@@ -12,6 +12,8 @@ const MOUSE_SENSITIVITY = 0.1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var movement_enabled = true
+var interaction_ray_enabled = true
+var ship_mode = false
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -19,8 +21,6 @@ func _ready():
 func _input(event):
 	if movement_enabled:
 		_camera_motion(event)
-	else:
-		pass
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -34,8 +34,6 @@ func _input(event):
 func _physics_process(delta):
 	if movement_enabled:
 		_player_movement(delta)
-	else:
-		pass
 
 
 func _player_movement(delta):
@@ -72,7 +70,20 @@ func _camera_motion(event):
 		cam_pivot.rotation.x = clamp(cam_pivot.rotation.x, deg_to_rad(-90), deg_to_rad(30))
 
 func _interact():
-	if interact_ray.is_colliding():
+	if interaction_ray_enabled and interact_ray.is_colliding():
 		var collider = interact_ray.get_collider()
 		if collider.has_signal("interact"):
 			collider.emit_signal("interact")
+	elif ship_mode:
+		stop_ship_mode()
+
+func start_ship_mode():
+	movement_enabled = false
+	interaction_ray_enabled = false
+	ship_mode = true
+
+func stop_ship_mode():
+	movement_enabled = true
+	interaction_ray_enabled = true
+	ship_mode = false
+	fpv_cam.make_current()
