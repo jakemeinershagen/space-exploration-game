@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxqrlj1vb6ewe"]
+[gd_scene load_steps=6 format=3 uid="uid://cxqrlj1vb6ewe"]
 
+[ext_resource type="Script" path="res://Scripts/ship.gd" id="1_5dv5p"]
 [ext_resource type="Material" uid="uid://cpydy1ewoe41j" path="res://Assets/BlueGrid.tres" id="1_ffv3v"]
 [ext_resource type="Material" uid="uid://crbbj8vl47i68" path="res://Assets/GreenGrid.tres" id="2_2un30"]
+[ext_resource type="PackedScene" uid="uid://dgfdnjqen0ko7" path="res://Button.tscn" id="3_8xx3k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4p1xi"]
 size = Vector3(12.498, 0.70488, 4.55585)
@@ -9,6 +11,7 @@ size = Vector3(12.498, 0.70488, 4.55585)
 [node name="Ship" type="VehicleBody3D"]
 collision_layer = 4
 collision_mask = 3
+script = ExtResource("1_5dv5p")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.753886, 0)
@@ -52,3 +55,9 @@ material = ExtResource("2_2un30")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.446275, 0)
 shape = SubResource("BoxShape3D_4p1xi")
+
+[node name="Button" parent="." instance=ExtResource("3_8xx3k")]
+transform = Transform3D(1.98043, -1.59841, 0, 1.59841, 1.98043, 0, 0, 0, 2.545, 5.05045, 1.72343, 0.00255176)
+collision_layer = 4
+
+[connection signal="interact" from="Button" to="." method="_on_button_interact"]
