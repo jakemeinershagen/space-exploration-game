@@ -15,6 +15,7 @@ height = 0.01
 radius = 0.02
 
 [node name="Button" type="StaticBody3D"]
+collision_layer = 8
 script = ExtResource("1_4pjef")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
